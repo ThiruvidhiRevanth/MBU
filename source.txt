@@ -1,0 +1,761 @@
+import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'MBU',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: GFG(),
+    );
+  }
+}
+
+// This is the widget that will be shown
+// as the homepage of your application.
+class GFG extends StatefulWidget {
+  const GFG({Key? key}) : super(key: key);
+
+  @override
+  State<GFG> createState() => _GFGState();
+}
+class _GFGState extends State<GFG> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("MBU"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              // method to show the search bar
+              showSearch(
+                  context: context,
+                  // delegate to customize the search bar
+                  delegate: CustomSearchDelegate()
+              );
+            },
+            icon:Icon(Icons.search),
+          )
+        ],
+      ),
+      body:Center(
+        child:Column(
+          mainAxisAlignment:MainAxisAlignment.center,
+          children:<Widget>[
+
+            TextButton(
+              child: Text("M Block-backside(101-400)"),
+              onPressed:(){
+                Navigator.push(
+                  context,MaterialPageRoute(builder: (context)=>SecondRoute()),
+                );
+
+              },
+            ),
+            TextButton(
+              child: Text("MNS Block(401-900)"),
+              onPressed:(){
+                Navigator.push(
+                  context,MaterialPageRoute(builder: (context)=>ThirdRoute()),
+                );
+
+              },
+            ),
+            TextButton(
+              child: Text("Diploma Block(1701-2060)"),
+
+              onPressed:(){
+                Navigator.push(
+                  context,MaterialPageRoute(builder: (context)=>FourRoute()),
+                );
+              },
+            ),
+            TextButton(
+              child: Text("Civil Block(2101-2500)"),
+
+              onPressed:(){
+                Navigator.push(
+                  context,MaterialPageRoute(builder: (context)=>FiveRoute()),
+                );
+              },
+            ),
+
+            TextButton(
+              child: Text("Mechanical Block(2501-2900)"),
+
+              onPressed:(){
+                Navigator.push(
+                  context,MaterialPageRoute(builder: (context)=>SixRoute()),
+                );
+              },
+            ),
+            TextButton(
+              child: Text("MBA Block(4101-4400)"),
+
+              onPressed:(){
+                Navigator.push(
+                  context,MaterialPageRoute(builder: (context)=>SevenRoute()),
+                );
+              },
+            ),
+
+            Container(
+              child:Align(
+                alignment:Alignment.bottomRight,
+                child:Text("Note :If the search bar does not return any result, it indicate that the room number is INVAILD."),
+              ),
+            ),
+            Container(
+              child:Column(
+                children:[
+                Align(
+                alignment:Alignment.bottomRight,
+                child:Text("From CSSE......."),
+              ),
+                  Align(
+                    alignment:Alignment.bottomRight,
+                    child:Text("Revanth"),
+                  ),
+                  Align(
+                    alignment:Alignment.bottomRight,
+                    child:Text("Puneeth"),
+                  ),
+                  Align(
+                    alignment:Alignment.bottomRight,
+                    child:Text("Surendra"),
+                  ),
+                  Align(
+                    alignment:Alignment.bottomRight,
+                    child:Text("Dharmik"),
+                  ),
+                  Align(
+                    alignment:Alignment.bottomRight,
+                    child:Text("Uday"),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+
+      ),
+    );
+  }
+}
+class CustomSearchDelegate extends SearchDelegate {
+
+  List<String> searchTerms = [
+    "102 -Digital Design Lab,Ground Floor,M Block",
+    "105 -DC Machine Lab,Ground Floor,M Block",
+    "109 -Electrical Measurement Lab,Ground Floor,M Block",
+    "108 -Electrical Panel Lab,Ground Floor,M Block",
+    "110 -Electrical Simulation Lab,Ground Floor,M Block",
+    "111 -Tuck Shop,Ground Floor,M Block",
+    "113 -AC Machine Lab,Ground Floor,M Block",
+    "114,115,116 -Exam Section,Ground Floor,M Block",
+    "117 -Female Wash Room,Ground Floor,M Block",
+    "118,124 -Male Wash Room,Ground Floor,M Block ",
+    "119,120 -Semi Conductor Lab,Ground Floor,M Block",
+    "101,106,121,122,123,123-A,123-B,123-C,125,126,128,131,132,133,134 -Lecture Hall,Ground Floor,M Block",
+    "103,104,107,112,127,129,130 -Faulty Room,Ground Floor,M Block",
+    "135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155 -Invalid Room Number",
+    "156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177 -Invalid Room Number",
+    "178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200 -Invalid Room Number",
+    "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30 -Invalid Room Number",
+    "31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60 -Invalid Room Number",
+    "61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80 -Invalid Room Number",
+    "81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100 -Invalid Room Number",
+    "201,207,208,221,222,224,229,230,233 -Lecture Hall,First Floor,M Block",
+    "202 - Micro Control Lab,First Floor,M Block",
+    "203 - Nano Electric Lab,First Floor,M Block",
+    "204 - ECE HOD Room,First Floor,M Block",
+    "205,223,231,232 - Faculty Room,First Floor,M Block",
+    "206 - EEE HOD Room,First Floor,M Block",
+    "209 - Male Wash Room,First Floor,M Block",
+    "210 - Electrical Panel Room,First Floor,M Block",
+    "211,212,213 - Research Lab,First Floor,M Block",
+    "214,215 - Computer Lab-1,First Floor,M Block",
+    "216,217,218 - Computer Lab-2,First Floor,M Block",
+    "219 - Niva Office,First Floor,M Block",
+    "220 - Female Wash Room,First Floor,M Block",
+    "225,228 - Store Room,First Floor,M Block",
+    "226,227 - Niva Office Room-2,First Floor,M Block",
+    "234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250 - Invalid Room Number",
+    "251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275 - Invalid Room Number",
+    "276,277,278,279,280,281,282,283,284,285,286,287,288,289,290,291,292,293,294,295,296,297,298,299,300 - Invalid Room Number",
+    "301,302,311,321,322,323,324,325,326,327,328,329,330,331,332,333,334 - Lecturer Hall,Second Floor,M Block",
+    "351,352,353,354,355 - Lecturer Hall,Second Floor,M Block",
+    "303 - Mixed Signal Lab,Second Floor,M Block",
+    "304 - Signal Systems Lab,Second Floor,M Block",
+    "306 - Faculty Room,Second Floor,M Block",
+    "307 - Store Room,Second Floor,M Block",
+    "308,309 - RF Circuit Lab,Second Floor,M Block",
+    "310 - Microwave Lab,Second Floor,M Block",
+    "312 - Male WashRoom,Second Floor,M Block",
+    "313 - Female WashRoom,Second Floor,M Block",
+    "314 - ElectroPanel Board,Second Floor,M Block",
+    "315 - A/C Duct Room,Second Floor,M Block",
+    "316 - Mac Room,Second Floor,M Block",
+    "317 - Digital Processing Lab,Second Floor,M Block",
+    "318,319,320 - Dasari Auditorium,Second Floor,M Block",
+    "335 - Female Wash Room,Second Floor,M Block",
+    "336,337,338,339,340,341,342,343,344,345,346,347,348,349,350 - Invalid Room Number",
+    "355,356,357,358,359,360,361,362,363,364,365,366,367,368,369,370,371,372,373,374,375 - Invalid Room Number",
+    "376,377,378,379,380,381,382,383,384,385,386,387,388,389,390,391,392,393,394,395,396,397,398,399,400 - Invalid Room Number",
+    "401 - Student Welfare Office Room,Ground Floor,MNS Block",
+    "402,403,404 - Computer Lab IOT,Ground Floor,MNS Block",
+    "405,412,414 - Engineering Physics Lab,Ground Floor,MNS Block",
+    "406 415 - Store Room,Ground Floor,MNS Block",
+    "407 - Faculty Room,Ground Floor,MNS Block",
+    "408 - IT Computer Lab,Ground Floor,MNS Block",
+    "409 - Female Wash Room,Ground Floor,MNS Block",
+    "410,411- Faculty Room,Ground Floor,MNS Block",
+    "413 - Center Of Applied Science Lab,Ground Floor,MNS Block",
+    "416 - Male Wash Room,Ground Floor,MNS Block",
+    "417,418 - Chemistry Lab,Ground Floor,MNS Block",
+    "419,422 - SVCN Principal,Ground Floor,MNS Block",
+    "420 - Nutrition Lab,Ground Floor,MNS Block",
+    "421 - Medical Surgical Lab,Ground Floor,MNS Block",
+    "423 - Signals and Network Lab,Ground Floor,MNS Block",
+    "424,425,426 - Nursing Foundation Lab,Ground Floor,MNS Block",
+    "427,428,429,430,431,432,433,434,435,436,437,438,439,440,441,442,443,444,445,446,447,448,449,450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,497,498,499,500 -Invalid Room Number",
+    "501 - Female Wah Room,First Floor,MNS Block",
+    "502,517 - Faculty Room,First Floor,MNS Block",
+    "503,504,513,514,515,516 - Lecturer Hall,First Floor,MNS Block",
+    "505,512,521 - Store Room,First Floor,MNS Block",
+    "506 507- Computer English Lab,First Floor,MNS BLock",
+    "508 - Computer Aided English Lab,First Floor,MNS Block",
+    "509 - Male Wash Room,First Floor,MNS Block",
+    "510,511 - CSSE Computer Lab,First Floor,MNS Block",
+    "518 - Female Wash Room,First Floor,MNS Block",
+    "519,520 - Seminar Hall,First Floor,MNS Block",
+    "522 - Community Health Nursing Lab,First Floor,MNS Block",
+    "523 - Maternal and Child Health Nursing Lab,First Floor,MNS Block",
+    "524 - Examination Section,First Floor,MNS Block",
+    "525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550 - Invalid Room Number",
+    "551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599,600 - Invalid Room Number",
+    "601,617 - Male Wash Room,Second Floor,MNS Block",
+    "602,607,613,615,616 - Faculty Room,Second Floor,MNS Block",
+    "603,604,605,606,609,610,611,612,618,621,622 - Lecturer Hall,Second Floor,MNS Block",
+    "608 - Female Wash Room,Second Floor,MNS Block",
+    "614 - CSSE HOD Room,Second Floor,MNS Block",
+    "619,620  - IT HOD Room,Second Floor,MNS Block",
+    "623 - SVCN Faculty Room,Second Floor,MNS Block",
+    "623,624,625,626.627,628,629,630,631,632,633,634,635,636,637,638,639,640,641,642,643,644,645,646,647,648,649,650 - Invalid Room Number",
+    "651,652,653,654,655,656,657,658,659,660,661,662,663,664,665,666,667,668,669,670,671,672,673,674,675,676,677,678 - Invalid Room Number",
+    "679,680,681,682,683,684,685,686,687,688,689,690,691,692,693,694,695,696,697,698,699,700 - Invalid Room Number",
+    "701,717 - Female Wash Room,Third Floor,MNS Block",
+    "702,707 - Faculty Room,Third Floor,MNS Block",
+    "703,704,705,706,709,710,711,712,714,715,716,718,721,722 - Lecturer Hall,Third Floor,MNS Block",
+    "708 - Male Wash Room,Third Floor,MNS Block",
+    "713 - Library,Third Floor,MNS Block",
+    "719 - Audio And Visual Aids Room,Third Floor,MNS Block",
+    "727 - Faculty Room,Third Floor,MNS Block",
+    "722,723,724,725,726 - Invalid Room Number",
+    "728,729,730,731,732,733,734,735,736,737,738,739,740,741,742,743,744,745,746,747,748,749,750 - Invalid Room Number",
+    "751,752,753,754,755,756,757,758,759,760,761,762,763,764,765,766,767,768,769,770,771,772,773,774,775 - Invalid Room Number",
+    "776,777,778,779,780,781,782,783,784,785,786,787,788,789,790,791,792,793,794,795,796,797,798,799,800 - Invalid Room Number",
+    "801,802,803,811,812,813,815,816,817,818,819,822,823,824,825 - Lecturer Hall,Fourth Floor,MNS Block",
+    "804,805,806,807 - TGR Auditorium,Fourth Floor,MNS Block",
+    "808 - Female Wash Room,Fourth Floor,MNS Block",
+    "809,820 - Male Wash Room,Fourth Floor,MNS Block",
+    "810 - Store Room,Fourth Floor,MNS Block",
+    "814 - Department Of Physical Education(Sports),Fourth Floor,MNS Block",
+    "821,826 - Faculty Room,Fourth Floor,MNS Block",
+    "827,828,829,830,831,832,833,834,835,836,837,838,839,840,841,842,843,844,845,846,847,848,849,850 - Invalid Number",
+    "851,852,853,854,855,856,857,858,859,860,861,862,863,864,865,866,867,868,869,870,871,872,873,874,875 - Invalid Number",
+    "876,877,878,879,880,881,882,883,884,885,886,887,888,889,890,891,892,893,894,895,896,897,898,899,900 - Invalid Number",
+    "900,901,902,903,904,905,906,907,908,909,910,911,912,913,914,915,916,917,918,919,920,921,922,923,924,925,926,927,928,929 - Invalid Room Number",
+    "930,931,932,933,934,935,936,937,938,939,940,941,942,943,944,945,946,947,948,949,950,951,952,953,954,955,956,957,958,959,960 - Invalid Room Number",
+    "961,962,963,964,965,966,967,968,969,970,971,972,973,974,975,976,977,978,979,980,981,982,983,984,985,986,987,988,989,990,991,992,993,994,995,996,997,998,999,1000 - Invalid Room Number",
+    "1701,1702,1703 - Lecturer Hall,Ground Floor,Diploma Block",
+    "1704 - Metallurgy Lab,Ground Floor,Diploma Block",
+    "1705 - Science Director,Ground Floor,Diploma Block",
+    "1706,1707,1708 - Store,Ground Floor,Diploma Block",
+    "1709 - Heat of EIE,Ground Floor,Diploma Block",
+    "1710,1711 - Faculty Room,Ground Floor,Diploma Block",
+    "1712 -Industrial Auto machine Lab,Ground Floor,Diploma Block",
+    "1713 -Process Control Lab,Ground Floor,Diploma Block",
+    "1714 -Analysis and Modeling Research Lab,Ground Floor,Diploma Block",
+    "1715 -Male Wash Room,Ground Floor,Diploma Block",
+    "1716, 1717, 1718, 1719, 1720, 1721, 1722, 1723, 1724, 1725, 1726, 1727, 1728, 1729, 1730, 1731, 1732, 1733, 1734, 1735, 1736, 1737, 1738, 1739, 1740 -Invalid Room Number",
+    "1741, 1742, 1743, 1744, 1745, 1746, 1747, 1748, 1749, 1750, 1751, 1752, 1753, 1754, 1755, 1756, 1757, 1758, 1759, 1760, 1761, 1762, 1763, 1764, 1765, 1766 -Invalid Room Number",
+    "1767, 1768, 1769, 1770, 1771, 1772, 1773, 1774, 1775, 1776, 1777, 1778, 1779, 1780, 1781, 1782, 1783, 1784, 1785, 1786, 1787, 1788, 1789, 1790, 1791, 1792, 1793, 1794, 1795, 1796, 1797, 1798, 1799, 1800 -Invalid Room Number",
+    "1801 -Male Wash Room,First Floor,Diploma Block",
+    "1802,1803,1804,1805 -Lecturer Hall,First Floor,Diploma Block",
+    "1810,1811,1812 -MCA Computer Lab,First Floor,Diploma Block",
+    "1809 -MBA Faulty Room,First Floor,Diploma Block",
+    "1901 -Female Wash Room,Second Floor,Diploma Block",
+    "1902,1903,1904 -Lecturer Hall,Second Floor,Diploma Block",
+    "1905 -MBA Faulty Room,Second Floor,Diploma Block",
+    "1907 -MCA HOD Room,Second Floor,Diploma Block",
+    "1909 -MCA Faulty Room,Second Floor,Diploma Block",
+    "1910 -Seminar Hall,Second Floor,Diploma Block,",
+    "1911 -Tutorial Room,Second Floor,Diploma Block",
+    "1912 -Male Wash Room,Second Floor,Diploma Block",
+    "2001 -Female Wah Room,Third Floor,Diploma BLock",
+    "2002,2003,2004 -Lecturer Hall,Third Floor,Diploma BLock",
+    "2005,2009 -Faulty Room,Third Floor,Diploma BLock",
+    "2010,2011 -Lecturer Hall,Third Floor,Diploma BLock",
+    "2012 -Male Wash Room,Third Floor,Diploma BLock",
+    "2051 -Female Wash Room,Fourth Floor,Diploma BLock",
+    "2052,2053,2054,2058 -Lecturer Hall,Fourth Floor,Diploma BLock",
+    "2055,2056-Faulty Room,Fourth Floor,Diploma BLock",
+    "2057 -Linear and Digital Application Lab,Fourth Floor,Diploma BLock",
+    "2059 -Measurements and Transducer Lab,Fourth Floor,Diploma BLock",
+    "2101 -Male Wash Room,Ground Floor,Civil Block",
+    "2102 -Environment Engineering Lab,Ground Floor,Civil Block",
+    "2103 -Engineering geology Lab,Ground Floor,Civil Block",
+    "2104 -Female Wash Room,Ground Floor,Civil Block",
+    "2105 - Hk Help Desk,Ground Floor,Civil Block",
+    "2106,2107,2018 -Seminar Hall,Ground Floor,Civil Block",
+    "2108 -Female wash Room ,Ground Floor,Civil Block",
+    "2202 -Cad Lab,First Floor,Civil Block",
+    "2203 -GIS Lab,First Floor,Civil Block",
+    "2201,2204 -Female ,First Floor,Civil Block",
+    "2205,2209 -Male,First Floor,Civil Block",
+    "2206,2207,2208 -Faulty Room,,First Floor,Civil Block",
+    "2301 -HOD Room,Second Floor,Civil Block",
+    "2302,2303,2306,2307 -lecturer Hall,Second Floor,Civil Block",
+    "2304,2308 -Female Wash Room,Second Floor,Civil Block",
+    "2305 -Male Wash Room,Second Floor,Civil Block ",
+    "2401 -Faulty Room,Third Floor,Civil Block ",
+    "2402,2403,2406,2407 -lecturer Hall,Third Floor,Civil Block",
+    "2404,2408 -Female Wash Room,Third Floor,Civil Block",
+    "2451 -Tutorial Room MTech,Fourth Floor,Civil Block",
+    "2452,2453,2455,2456 -Faulty Room,Fourth Floor,Civil Block",
+    "2457 -Male Wash Room,Fourth Floor,Civil Block",
+    "2501,2504 -Male wash Room,Ground Floor,Mechanical Block",
+    "2502 -Micro Matting Research Lab,Ground Floor,Mechanical Block",
+    "2503 -Cam Lab,Ground Floor,Mechanical Block",
+    "2505 -Store Room,Ground Floor,Mechanical Block",
+    "2506 -Principal Room,Ground Floor,Mechanical Block ",
+    "2507,2508 -Seminar Hall,Ground Floor,Mechanical Block",
+    "2509 -Female Wash Room,Ground Floor,Mechanical Block",
+    "2601,2604 -Male Wash Room,First Floor,Mechanical Block",
+    "2602 -Staff Room,First Floor,Mechanical Block",
+    "2603,2605 -Lecturer Hall,First Floor,Mechanical Block",
+    "2606,2607 -CAED Room,First Floor,Mechanical Block",
+    "2608 -HOD Room,First Floor,Mechanical Block",
+    "2701,2704 -Male Wash Room,Second Floor,Mechanical Block",
+    "2702,2703,2706 -Lecturer Hall,Second Floor,Mechanical Block",
+    "2707 -CAED Room,Second Floor,Mechanical Block",
+    "2705 -Female Wash Room,Second Floor,Mechanical Block",
+    "2801,2804 -Male Wash Room,Third Floor,Mechanical Block",
+    "2802,2803,2806,2807 -Lecturer Hall,Third Floor,Mechanical Block",
+    "2805 -Female Wash Room,Third Floor,Mechanical Block",
+    "2808 -NSS Unit,Third Floor,Mechanical Block",
+    "2851 -Dept Library Room,Fourth Floor,Mechanical Block",
+    "2852,2853,2854 -Lecturer Hall,Fourth Floor,Mechanical Block",
+    "2855,2856 -Drawing Hall,Fourth Floor,Mechanical Block",
+    "2857 -Male Wash Room,Fourth Floor,Mechanical Block",
+    "4101,4102,4103,4111,4112,4113,4114,4115,4116,4117,4118,4119,4120 -Lecturer Hall,First Floor,MBA Block",
+    "4104-Female wash Room,First Floor,MBA Block",
+    "4109,4110 -Examination Section,First Floor,MBA Block",
+    "4203,4204,4205,4214,4215,4216,4217,4218,4219,4220,4221 -Lecturer Hall,Second Floor,MBA Block",
+    "4300,4301,4302,4304,4315,4316,4317,4318,4319,4320 -Lecturer Hall,Third Floor,MBA Block",
+  ];
+
+// first overwrite to
+// clear the search text
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+        onPressed: () {
+          query = '';
+        },
+        icon: Icon(Icons.clear),
+      ),
+    ];
+  }
+
+// second overwrite to pop out of search menu
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        close(context, null);
+      },
+      icon: Icon(Icons.arrow_back),
+    );
+  }
+
+// third overwrite to show query result
+  @override
+  Widget buildResults(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var fruit in searchTerms) {
+      if (fruit.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(fruit);
+      }
+    }
+
+    return ListView.builder(
+      itemCount: matchQuery.length,
+      itemBuilder: (context, index) {
+        var result = matchQuery[index];
+        return ListTile(
+          title: Text(result),
+        );
+      },
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var fruit in searchTerms) {
+      if (fruit.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(fruit);
+
+      }}
+    return ListView.builder(
+      itemCount: matchQuery.length,
+      itemBuilder: (context, index) {
+        var result = matchQuery[index];
+        return ListTile(
+          title: Text(result),
+        );
+      },
+    );
+  }
+}
+class SecondRoute extends StatelessWidget{
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: const TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.photo)),
+                Tab(icon: Icon(Icons.route)),
+
+              ],
+            ),
+            title: const Text('M Block-backside(101-400)'),
+          ),
+          body:TabBarView(
+            children:<Widget>[
+              Second1(),
+              Second2(),
+            ],
+          ),
+        ),),
+    );
+  }
+}
+class ThirdRoute extends StatelessWidget{
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: const TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.photo)),
+                Tab(icon: Icon(Icons.route)),
+
+              ],
+            ),
+            title: const Text('MNS Block(401-900)'),
+          ),
+          body:TabBarView(
+            children:<Widget>[
+              Three1(),
+              Three2(),
+            ],
+          ),
+        ),),
+    );
+  }
+}
+class FourRoute extends StatelessWidget{
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: const TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.photo)),
+                Tab(icon: Icon(Icons.route)),
+
+              ],
+            ),
+            title: const Text('Diploma Block(1701-2060)'),
+          ),
+          body:TabBarView(
+            children:<Widget>[
+              four1(),
+              four2(),
+            ],
+          ),
+        ),),
+    );
+  }
+}
+class FiveRoute extends StatelessWidget{
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: const TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.photo)),
+                Tab(icon: Icon(Icons.route)),
+
+              ],
+            ),
+            title: const Text('Civil Block(2101-2500)'),
+          ),
+          body:TabBarView(
+            children:<Widget>[
+              five1(),
+              five2(),
+            ],
+          ),
+        ),),
+    );
+  }
+}
+class SixRoute extends StatelessWidget{
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: const TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.photo)),
+                Tab(icon: Icon(Icons.route)),
+
+              ],
+            ),
+            title: const Text('Mechanical Block(2501-2900)'),
+          ),
+          body:TabBarView(
+            children:<Widget>[
+              Six1(),
+              Six2(),
+            ],
+          ),
+        ),),
+    );
+  }
+}
+class SevenRoute extends StatelessWidget{
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: const TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.photo)),
+                Tab(icon: Icon(Icons.route)),
+
+              ],
+            ),
+            title: const Text('MBA Block(4101-4400)'),
+          ),
+          body:TabBarView(
+              children:<Widget>[
+              Seven1(),
+              Seven2(),
+              ],
+            ),
+      ),),
+    );
+  }
+}
+class Seven1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child:Padding(
+        padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
+
+          child:PhotoView(
+            imageProvider: AssetImage("assests/images/mba.jpg"),
+        ),
+      ),
+    );
+  }
+}
+class Seven2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child:Padding(
+        padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
+
+        child:PhotoView(
+          imageProvider: AssetImage("assests/images/mbar.jpg"),
+        ),
+      ),
+    );
+  }
+}
+class Six1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child:Padding(
+        padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
+
+        child:PhotoView(
+          imageProvider: AssetImage("assests/images/mechanical.jpg"),
+        ),
+      ),
+    );
+  }
+}
+class Six2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child:Padding(
+        padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
+
+        child:PhotoView(
+          imageProvider: AssetImage("assests/images/MECHr.jpg"),
+        ),
+      ),
+    );
+  }
+}
+class five1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child:Padding(
+        padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
+
+        child:PhotoView(
+          imageProvider: AssetImage("assests/images/civilblock.jpg"),
+        ),
+      ),
+    );
+  }
+}
+class five2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child:Padding(
+        padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
+
+        child:PhotoView(
+          imageProvider: AssetImage("assests/images/civilr.jpg"),
+        ),
+      ),
+    );
+  }
+}
+class four1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child:Padding(
+        padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
+
+        child:PhotoView(
+          imageProvider: AssetImage("assests/images/diploma.jpg"),
+        ),
+      ),
+    );
+  }
+}
+class four2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child:Padding(
+        padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
+
+        child:PhotoView(
+          imageProvider: AssetImage("assests/images/Diplomar.jpg"),
+        ),
+      ),
+    );
+  }
+}
+class Three1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child:Padding(
+        padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
+
+        child:PhotoView(
+          imageProvider: AssetImage("assests/images/mns.jpg"),
+        ),
+      ),
+    );
+  }
+}
+class Three2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child:Padding(
+        padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
+
+        child:PhotoView(
+          imageProvider: AssetImage("assests/images/mnsr.jpg"),
+        ),
+      ),
+    );
+  }
+}
+class Second1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child:Padding(
+        padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
+
+        child:PhotoView(
+          imageProvider: AssetImage("assests/images/m.jpg"),
+        ),
+      ),
+    );
+  }
+}
+class Second2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child:Padding(
+        padding: EdgeInsets.fromLTRB(0, 50, 0, 50),
+
+        child:PhotoView(
+          imageProvider: AssetImage("assests/images/Mr.jpg"),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
